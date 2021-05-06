@@ -1,6 +1,6 @@
 # Workshop_Combat
 
- Unity Project files for VGDC Unity UI Workshop 5/6/2021
+ Unity Project files for VGDC Unity Combat System Workshop 5/6/2021
 
 - [See Zoom recording](no)
 

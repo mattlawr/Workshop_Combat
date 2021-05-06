@@ -4,9 +4,19 @@
 
 - [See Zoom recording](no)
 
-### Combat System breakdown
+### Combat System Hierarchy
 
-Entity > Fighter > Player
+* **Entity** is the base class
+  > Holds data for *health*
+
+  * **Fighter** is an **Entity**
+    > Has one **Hitbox** (or more)
+
+    * **Player** is a **Fighter**
+      > Holds data for reading *player input*
+
+* **Hitbox** collides with **Entity** objects
+  > Holds data for *attacks*
 
 ---
 

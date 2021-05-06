@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Holds information about an attack animation and related hitboxes
 // To be contained in an array in Fighter
 [System.Serializable]
 public class AttackData
@@ -30,6 +31,9 @@ public class AttackData
         h.Deactivate();
     }
 
+    /// <summary>
+    /// Deactivates the attack.
+    /// </summary>
     public void Finish()
     {
         foreach(Hitbox h in hitboxes)

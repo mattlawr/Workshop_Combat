@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This is a sub class for Fighters that will be controlled by a player.
 public class Player : Fighter
 {
     [Space]
@@ -49,6 +50,7 @@ public class Player : Fighter
             Vector3 f = rb.position + moveDir;
             rb.MovePosition(f); // Moves player position
 
+            // Rotate the player to look where we're moving!
             if (moveDir != Vector3.zero)
             {
                 rb.rotation = Quaternion.LookRotation(moveDir / Time.deltaTime, Vector3.up);
@@ -58,7 +60,7 @@ public class Player : Fighter
         }
 
         // Attacks via Input
-        // TODO
+        // TODO!
 
         base.Update();
     }

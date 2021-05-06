@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// This is the base class of everything that can take damage.
 public class Entity : MonoBehaviour
 {
     protected Rigidbody rb;
@@ -12,14 +13,16 @@ public class Entity : MonoBehaviour
     {
         return rb;
     }
+    public Collider GetCollide()
+    {
+        return collide;
+    }
 
     // Physics stuff
     virtual protected Vector3 GetVelocity()
     {
-        if (!rb) return Vector3.zero;
-        return (rb.position - lastPosition) / Time.deltaTime;
+        return Vector3.zero;
     }
-    private Vector3 lastPosition;
 
     public Vector3 GetLocation()
     {
@@ -133,16 +136,16 @@ public class Entity : MonoBehaviour
         }
     }
 
+    // Can be called by a pickup script!
     public virtual void TakeHeals(int amount)
     {
         currHealth += amount;
 
         if (currHealth > maxHealth) currHealth = maxHealth;
 
-        //print("TakeHeals() Healed by " + amount + "!!!");
-
     }
 
+    // Pushes this entity back!
     protected virtual void Knockback(DamageData data, Vector3 forward)
     {
         if (dead) return;
@@ -150,16 +153,16 @@ public class Entity : MonoBehaviour
         Vector3 dir = data.GetForce() * forward;
         rb.AddForce(dir, ForceMode.Impulse);
 
-        Debug.DrawRay(rb.position, dir, Color.green, 2f);
+        Debug.DrawRay(rb.position, dir, Color.green, 1f);   // For visual purposes
 
-        Hitstun(data.GetHitstun());
+        Hitstun(data.GetHitstun()); // Makes the entity stunned by the hit
     }
 
     protected virtual void Hitstun(float t)
     {
         if (t <= 0f) return;
 
-        // Flash effect? nah
+        // Flash effect?
         hitstunCooldown = t;
     }
 
@@ -185,11 +188,6 @@ public class Entity : MonoBehaviour
         MeshRenderer m = GetComponent<MeshRenderer>();
         if (m) m.enabled = false;
         this.enabled = false;
-    }
-
-    public Collider GetCollide()
-    {
-        return collide;
     }
 
     // Sounds!

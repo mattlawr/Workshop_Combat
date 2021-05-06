@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This is a sub class for Entities that can deal damage.
 public class Fighter : Entity
 {
     protected AttackData[] attacks;
@@ -120,12 +121,12 @@ public class Fighter : Entity
         base.TakeDamage(data, forward, owner);
     }
 
+    // Used to tell this fighter to not collide with another Entity
     public void SetCollide(Entity e, bool ignores)
     {
         Physics.IgnoreCollision(GetCollide(), e.GetCollide(), ignores);
         collideIgnore = e.GetCollide();
     }
-
     public void SetCollide(bool ignores)
     {
         if(collideIgnore) Physics.IgnoreCollision(GetCollide(), collideIgnore, false);
@@ -135,12 +136,7 @@ public class Fighter : Entity
 
     public virtual void DidHit()
     {
-        // Called from a hitbox. Can be useful!
-    }
-
-    public virtual int GetExtraDamage()
-    {
-        return 0;
+        // Called from a hitbox owned by this fighter. Can be useful for tracking hits!
     }
 
     /// <summary>
@@ -156,19 +152,25 @@ public class Fighter : Entity
         return attacks[attackCurrent];
     }
 
+    // When our attack is done, we should mark it as finished
     void FinishAttack()
     {
         if (!InAttack()) return;
 
         GetCurrentAttack().Finish();
         StopAnimMove();
+        
+        attackCurrent = -1;
     }
 
+    // When we get hit during an attack, we should stop attacking!
     protected void CancelAttack()
     {
         if (!InAttack()) return;
 
+        // Setup to "cancel" the current animation in the animator
         if (animator) animator.SetTrigger("cancel");
+
         FinishAttack();
     }
 

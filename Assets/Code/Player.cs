@@ -46,10 +46,13 @@ public class Player : Fighter
             moveDir.x *= moveSpeed.x;
             moveDir.z *= moveSpeed.y;
 
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-
             Vector3 f = rb.position + moveDir;
             rb.MovePosition(f); // Moves player position
+
+            if (moveDir != Vector3.zero)
+            {
+                rb.rotation = Quaternion.LookRotation(moveDir / Time.deltaTime, Vector3.up);
+            }
 
             // --
         }

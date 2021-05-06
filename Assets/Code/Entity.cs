@@ -26,14 +26,7 @@ public class Entity : MonoBehaviour
         return rb.position;
     }
 
-    public SpriteRenderer spriteRenderer;
     public Animator animator;
-    public LayerMask ground;
-
-    float statusTimer = 0f;
-    float statusTimer2 = 0f;
-
-    public bool lockToArena = true;
 
     /*public float iFrameTime = 0f;
     public bool iSuperArmor = false;*/

@@ -17,14 +17,11 @@ public class Fighter : Entity
     Collider collideIgnore;
 
     bool moving = false;
-    RigidbodyConstraints constraints = RigidbodyConstraints.FreezeRotation;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
-        if (rb) constraints = rb.constraints;
     }
 
     // Update is called once per frame

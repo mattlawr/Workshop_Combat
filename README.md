@@ -8,8 +8,7 @@
  - Basic Unity rigidbodies
  - Animator system basics
 
-### [Join Zoom meeting](https://ucsd.zoom.us/j/93912108941?pwd=WGRMSm05THdGVnFxV2xPSzdUWXFjQT09)
-### [See Zoom recording (Coming Soon)](https://ucsd.zoom.us/j/93912108941?pwd=WGRMSm05THdGVnFxV2xPSzdUWXFjQT09)
+### [See Zoom recording](https://drive.google.com/file/d/1JlbrVaGS7OXE_UkeBwzp6ksiGioixy4q/view?usp=sharing)
 
 ### Combat System Hierarchy
 
